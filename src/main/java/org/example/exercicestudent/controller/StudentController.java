@@ -52,5 +52,17 @@ public class StudentController {
         return "result";
     }
 
+    @PostMapping("/students")
+    public String edit(Model model, Student student) {
+        studentService.createStudent(student);
+        model.addAttribute("student", studentService.getStudent(student.getId()));
+        return "details";
+    }
+    @GetMapping("/del/{id}")
+    public String delete(@PathVariable UUID id,Model model) {
+        studentService.deleteStudent(id);
+        return "redirect:/list";
+    }
+
 
 }

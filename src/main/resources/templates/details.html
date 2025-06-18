@@ -3,13 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .hidden{
+            display: none;
+        }
+    </style>
 </head>
 <body>
-<span th:replace="~{home :: header}"></span>
-<h2>détails</h2>
-<p>Nom : <span th:text="${student.getFirstName()}"></span></p>
-<p>Prenom : <span th:text="${student.getLastName()}"></span></p>
-<p>Mail : <span th:text="${student.getEmail()}"></span></p>
-<p>Age : <span th:text="${student.getAge()}"></span></p>
+    <span th:replace="~{home :: header}"></span>
+    <h2>détails</h2>
+    <div id="info" class="visible">
+        <p>Nom : <span th:text="${student.getFirstName()}"></span></p>
+        <p>Prenom : <span th:text="${student.getLastName()}"></span></p>
+        <p>Mail : <span th:text="${student.getEmail()}"></span></p>
+        <p>Age : <span th:text="${student.getAge()}"></span></p>
+        <button id="btnModifie">modifier</button>
+        <a th:href="@{/del/{id}(id=${student.getId()})}">Supprimer</a>
+    </div>
+
+    <div id="putForm" class="hidden">
+        <form method="post" th:action="@{/students}" th:object="${student}">
+            <input th:field="*{id}" type="hidden" />
+            <div>
+                <label for="firstName">Nom:</label>
+                <input type="text" th:field="*{firstName}" id="firstName" th:value="*{firstName}"/>
+            </div>
+            <div>
+                <label for="lastName">prenom:</label>
+                <input type="text" th:field="*{lastName}" id="lastName" th:value="*{lastName}"/>
+            </div>
+            <div>
+                <label for="age">Age :</label>
+                <input type="number" th:field="*{age}" id="age" th:value="*{age}"/>
+            </div>
+            <div>
+                <label for="email">email :</label>
+                <input type="text" th:field="*{email}" id="email" th:value="*{email}"/>
+            </div>
+            <button>Envoyer</button>
+        </form>
+    </div>
+    <script>
+        const info = document.getElementById("info")
+        const putForm = document.getElementById("putForm")
+        const btnModifie = document.getElementById("btnModifie")
+
+        btnModifie.addEventListener('click',()=>{
+            putForm.classList.remove("hidden")
+            info.classList.add("hidden")
+        })
+
+    </script>
 </body>
 </html>

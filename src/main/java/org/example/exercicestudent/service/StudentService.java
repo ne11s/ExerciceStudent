@@ -37,5 +37,12 @@ public class StudentService {
     public List<Student> getStudentByFirstName(String firstName) {
         return this.students.values().stream().filter(student -> student.getFirstName().toLowerCase().contains(firstName.toLowerCase())).toList();
     }
-
+    public String deleteStudent(UUID id) {
+        this.students.remove(id);
+        return id.toString();
+    }
+    public Student updateStudent(UUID id, Student student) {
+        this.students.put(id, student);
+        return student;
+    }
 }
