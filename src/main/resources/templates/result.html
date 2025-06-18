@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span th:replace="~{home :: header}"></span>
+<h2>Recherche d'étudiant</h2>
+<form method="get" th:action="@{/result}">
+<label>Recherchez avec un nom :</label>
+<input th:type="text" th:name="firstName" id="firstName" >
+</form>
+<ul th:if="${students != null}">
+    <li th:each="s : ${students}">
+        <a th:href="@{/students/{id}(id=${s.getId()})}">
+            <span th:text="${s.getFirstName()}"></span>
+            <span th:text="${s.getLastName()}"></span>
+        </a>
+    </li>
+</ul>
+</body>
+</html>

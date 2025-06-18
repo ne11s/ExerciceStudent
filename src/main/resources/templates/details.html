@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span th:replace="~{home :: header}"></span>
+<h2>détails</h2>
+<p>Nom : <span th:text="${student.getFirstName()}"></span></p>
+<p>Prenom : <span th:text="${student.getLastName()}"></span></p>
+<p>Mail : <span th:text="${student.getEmail()}"></span></p>
+<p>Age : <span th:text="${student.getAge()}"></span></p>
+</body>
+</html>
