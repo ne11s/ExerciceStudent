@@ -48,7 +48,7 @@ public class StudentController {
 
     @GetMapping("/result")
     public String result(@RequestParam(value = "firstName", required = false ) String firstName, Model model) {
-        model.addAttribute("students", studentService.getStudentByFirstName(firstName));
+        model.addAttribute("students", studentService.getStudentByFirstName(firstName == null ? "" : firstName));
         return "result";
     }
 

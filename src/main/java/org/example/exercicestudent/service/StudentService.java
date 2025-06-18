@@ -15,9 +15,9 @@ public class StudentService {
     public StudentService() {
         students = new HashMap<>();
 
-        Student student1 = new Student().builder().firstName("Nel").lastName("San").age(24).email("nelsan@mail.com").id(UUID.randomUUID()).build();
-        Student student2 = new Student().builder().firstName("noa").lastName("scelle").age(24).email("nelsan@mail.com").id(UUID.randomUUID()).build();
-        Student student3 = new Student().builder().firstName("salim").lastName("Saidou").age(24).email("nelsan@mail.com").id(UUID.randomUUID()).build();
+        Student student1 = new Student().builder().firstName("San").lastName("Nel").age(24).email("nelsan@mail.com").id(UUID.randomUUID()).build();
+        Student student2 = new Student().builder().firstName("Scelle").lastName("Noa").age(22).email("NoaScelle@mail.com").id(UUID.randomUUID()).build();
+        Student student3 = new Student().builder().firstName("Saidi").lastName("Salim").age(24).email("Salimou@mail.com").id(UUID.randomUUID()).build();
 
         this.students.put(student1.getId(), student1);
         this.students.put(student2.getId(), student2);
